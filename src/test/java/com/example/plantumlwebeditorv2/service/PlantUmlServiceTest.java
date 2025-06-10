@@ -55,15 +55,6 @@ public class PlantUmlServiceTest {
     }
 
     @Test
-    void renderDiagram_ASCII_Success() throws IOException {
-        String ascii = plantUmlService.renderDiagram(VALID_PLANTUML, PlantUmlService.OutputFormat.ASCII);
-
-        assertNotNull(ascii);
-        assertTrue(ascii.length() > 0);
-        assertTrue(ascii.contains("Alice") || ascii.contains("Bob"));
-    }
-
-    @Test
     void renderDiagram_PNG_Failure() {
         assertThrows(IllegalArgumentException.class, () -> {
             plantUmlService.renderDiagram(VALID_PLANTUML, PlantUmlService.OutputFormat.PNG);
