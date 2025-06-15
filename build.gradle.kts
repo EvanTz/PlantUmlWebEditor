@@ -20,6 +20,11 @@ java {
     }
 }
 
+// Set main class
+springBoot {
+    mainClass.set("com.example.plantumlwebeditorv2.PlantUmlWebEditorV2Application")
+}
+
 repositories {
     mavenCentral()
 }
@@ -85,6 +90,12 @@ tasks.bootJar {
     exclude("META-INF/*.DSA")
     exclude("META-INF/*.RSA")
     archiveClassifier.set("")
+
+    // Set main class in manifest
+    manifest {
+        attributes["Main-Class"] = "org.springframework.boot.loader.JarLauncher"
+        attributes["Start-Class"] = "com.example.plantumlwebeditorv2.PlantUmlWebEditorV2Application"
+    }
 }
 
 tasks.jar {
