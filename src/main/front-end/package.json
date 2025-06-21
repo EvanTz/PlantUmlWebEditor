@@ -39,7 +39,8 @@
     ]
   },
   "options": {
-  	"allowedHosts": ["all"]
+  	"allowedHosts": ["localhost","127.0.0.1","all"],
+    "proxy": "http://localhost:8080/"
   },
   "proxy": "http://localhost:8080/"
 
