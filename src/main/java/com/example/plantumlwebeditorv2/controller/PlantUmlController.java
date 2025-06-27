@@ -34,13 +34,6 @@ public class PlantUmlController {
                     .contentType(MediaType.parseMediaType("image/svg+xml")) // n
                     .body(svgContent);
 
-        } else if (outputFormat == OutputFormat.ASCII) {
-            String asciiContent = plantUmlService.renderDiagram(source, OutputFormat.ASCII);
-
-            return ResponseEntity.ok()
-                    .contentType(MediaType.TEXT_PLAIN)
-                    .body(asciiContent);
-
         } else {
 //            throw new IllegalArgumentException("Only SVG and ASCII formats can be rendered as strings");
             return ResponseEntity.badRequest().build();
@@ -62,9 +55,6 @@ public class PlantUmlController {
         switch (outputFormat) {
             case SVG:
                 headers.setContentType(MediaType.parseMediaType("image/svg+xml"));
-                break;
-            case ASCII:
-                headers.setContentType(MediaType.TEXT_PLAIN);
                 break;
             case PNG:
             default:
