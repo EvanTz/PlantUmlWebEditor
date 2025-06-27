@@ -18,7 +18,7 @@ public class PlantUmlService {
 
     // png needs graphviz to work
     public enum OutputFormat {
-        PNG, SVG, ASCII
+        PNG, SVG
     }
 
     // Main image diagram generator
@@ -31,9 +31,6 @@ public class PlantUmlService {
         switch (format) {
             case SVG:
                 fileFormat = FileFormat.SVG;
-                break;
-            case ASCII:
-                fileFormat = FileFormat.ATXT;
                 break;
             case PNG:
             default:
@@ -56,13 +53,10 @@ public class PlantUmlService {
 
     // Render diagram as a string
     public String renderDiagram(String source, OutputFormat format) throws IOException {
-        if (format == OutputFormat.ASCII) {
-            return new String(generateImage(source, OutputFormat.ASCII), StandardCharsets.UTF_8);
-        } else
         if (format == OutputFormat.SVG) {
             return new String(generateImage(source, OutputFormat.SVG), StandardCharsets.UTF_8);
         } else {
-            throw new IllegalArgumentException("Only ASCII and SVG formats can be rendered as strings");
+            throw new IllegalArgumentException("Only SVG format can be rendered as string");
         }
     }
 

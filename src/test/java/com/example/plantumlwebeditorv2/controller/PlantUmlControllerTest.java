@@ -32,16 +32,6 @@ public class PlantUmlControllerTest {
     }
 
     @Test
-    void renderDiagram_ASCII_Success() throws Exception {
-        mockMvc.perform(post("/api/plantuml/render")
-                        .param("format", "ASCII")
-                        .contentType(MediaType.TEXT_PLAIN)
-                        .content(VALID_PLANTUML))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.TEXT_PLAIN));
-    }
-
-    @Test
     void renderDiagram_InvalidFormat_Failure() throws Exception {
         mockMvc.perform(post("/api/plantuml/render")
                         .param("format", "PNG")
